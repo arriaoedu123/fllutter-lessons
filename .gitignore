@@ -6,3 +6,5 @@
 build/
 
 .devcontainer
+.vscode
+logs
