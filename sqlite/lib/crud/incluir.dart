@@ -18,7 +18,8 @@ class Incluir extends StatelessWidget {
     print('Registro inserido com sucesso: $id');
   }
 
-  TextEditingController incluirControler = TextEditingController();
+  TextEditingController nomeController = TextEditingController();
+  TextEditingController idadeController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -33,15 +34,29 @@ class Incluir extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 200,
+                  Container(
+                    width: 300,
                     child: TextFormField(
-                      controller: incluirControler,
+                      controller: nomeController,
                       textAlign: TextAlign.center,
                       validator: ((value) =>
-                          value!.isEmpty ? "Informe o valor a incluir" : null),
+                          value!.isEmpty ? "Informe o nome" : null),
                       decoration: const InputDecoration(
-                          labelText: 'Informe o valor a incluir',
+                        labelText: 'Informe o nome',
+                        labelStyle: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 300,
+                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: TextFormField(
+                      controller: idadeController,
+                      textAlign: TextAlign.center,
+                      validator: ((value) =>
+                          value!.isEmpty ? "Informe a idade" : null),
+                      decoration: const InputDecoration(
+                          labelText: 'Informe a idade',
                           labelStyle: TextStyle(fontSize: 18)),
                     ),
                   )

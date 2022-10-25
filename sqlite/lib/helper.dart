@@ -69,8 +69,25 @@ class DatabaseHelper {
   }
 
   // método que retorna todas as linhas existentes no banco de dados (tabela)
-  Future<List<Map<String, dynamic>>> queryAllCrescente() async {
+  Future<List<Map<String, dynamic>>> queryAllId() async {
     Database? db = await instance.database;
     return await db!.query(table);
+  }
+
+  // método para atualizar um registro
+  Future<int> update(Map<String, dynamic> row) async {
+    Database? db = await instance.database;
+
+    int id = row[columnId];
+
+    return await db!
+        .update(table, row, where: '$columnId = ?', whereArgs: [id]);
+  }
+
+  // método para excluir um registro
+  Future<int> delete(int id) async {
+    Database? db = await instance.database;
+
+    return await db!.delete(table, where: '$columnId = ?', whereArgs: [id]);
   }
 }
